@@ -7,44 +7,38 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ApdexTest {
     private Apdex apdex;
+
     @BeforeEach
-    public void arrange(){
+    public void arrange() {
         this.apdex = new Apdex();
     }
 
     @Test
-    public void testValidarApdexExcelente(){
-        //Apdex apdex = new Apdex();
-        double result = apdex.validarApdex(557525,0,557525);
-        assertEquals(1, result, 0.01);
+    public void testValidarApdexExcelente() {
+        double result = apdex.validarApdex(557525, 0, 557525);
+        assertEquals(1.0, result, 0.01);
     }
 
     @Test
-    public void testValidarApdexBom(){
-        //Apdex apdex = new Apdex();
-        double result = apdex.validarApdex(490000,67525,557525);
-        assertEquals(0.93, result, 0.01);
+    public void testValidarApdexBom() {
+        double result = apdex.validarApdex(475000, 50000, 557525);         assertEquals(0.90, result, 0.01);
     }
 
     @Test
-    public void testValidarApdexRazoavel(){
-        //Apdex apdex = new Apdex();
-        double result = apdex.validarApdex(330000,228962,557525);
-        assertEquals(0.79, result, 0.01);
+    public void testValidarApdexRazoavel() {
+        double result = apdex.validarApdex(390000, 75000, 557525);
+        assertEquals(0.77, result, 0.01);
     }
 
     @Test
-    public void testValidarApdexRuim(){
-        //Apdex apdex = new Apdex();
-        double result = apdex.validarApdex(200000,358962,557525);
-        assertEquals(0.67, result, 0.01);
+    public void testValidarApdexRuim() {
+        double result = apdex.validarApdex(260000, 100000, 557525);
+        assertEquals(0.55, result, 0.01);
     }
 
     @Test
-    public void testValidarApdexInaceitavel(){
-        //Apdex apdex = new Apdex();
-        double result = apdex.validarApdex(0,500000,557525);
-        assertEquals(0.44, result, 0.01);
+    public void testValidarApdexInaceitavel() {
+        double result = apdex.validarApdex(100000, 100000, 557525);
+        assertEquals(0.26, result, 0.01);
     }
-
 }
